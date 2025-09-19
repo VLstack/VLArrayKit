@@ -1,5 +1,6 @@
 extension Array where Element: Hashable
 {
+ @inlinable
  public func differences(from old: [ Element ]) -> (removed: Set<Element>, added: Set<Element>)
  {
   let newSet = Set(self)
