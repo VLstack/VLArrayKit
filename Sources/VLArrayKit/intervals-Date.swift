@@ -2,20 +2,30 @@ import Foundation
 
 extension Array where Element == Date
 {
+ @inlinable
  public func intervals() -> [ Double ]
  {
-  guard !self.isEmpty else { return [] }
+  guard self.count > 1 else { return [] }
 
-  let timestamps: [ Date ] = self.compactMap { $0 }.sorted()
-  guard !timestamps.isEmpty else { return [] }
+  let sortedDates = self.sorted()
+  var intervals: [ Double ] = []
+  intervals.reserveCapacity(sortedDates.count - 1)
 
-  var intervals: [Double] = []
-  for i in 1..<timestamps.count
+  for i in 1..<sortedDates.count
   {
-   let interval = timestamps[i].timeIntervalSince(timestamps[i - 1])
+   let interval = sortedDates[i].timeIntervalSince(sortedDates[i - 1])
    intervals.append(interval)
   }
 
   return intervals
+ }
+}
+
+extension Array where Element == Date?
+{
+ @inlinable
+ public func intervals() -> [ Double ]
+ {
+  self.compactMap { $0 }.intervals()
  }
 }
