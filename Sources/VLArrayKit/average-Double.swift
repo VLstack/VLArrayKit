@@ -5,7 +5,7 @@ extension Array where Element == Double
  @inlinable
  public func average() -> Double?
  {
-  guard !isEmpty else { return nil }
+  guard !self.isEmpty else { return nil }
 
   let sum = reduce(0, +)
 
@@ -15,15 +15,15 @@ extension Array where Element == Double
  @inlinable
  public func trimmedAverage(percent: Int = 10) -> Double?
  {
-  guard !isEmpty,
+  guard !self.isEmpty,
          percent >= 0,
          percent <= 50
   else { return nil }
 
   let sorted = self.sorted()
-  let trimCount = Int(Double(count) * Double(percent) / 100.0)
+  let trimCount = Int(Double(self.count) * Double(percent) / 100.0)
   let lowerBound = trimCount
-  let upperBound = count - trimCount
+  let upperBound = self.count - trimCount
 
   guard lowerBound < upperBound else { return nil }
 
