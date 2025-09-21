@@ -1,5 +1,3 @@
-import Foundation
-
 extension Array where Element == Double
 {
  /// Computes the arithmetic mean of all elements in the array.

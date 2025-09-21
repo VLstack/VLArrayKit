@@ -1,5 +1,3 @@
-//import Foundation
-
 extension Array where Element == Double
 {
  /// Computes the average after trimming a percentage of values
