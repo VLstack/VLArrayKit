@@ -2,6 +2,8 @@ import Foundation
 
 extension Array where Element == Double
 {
+ /// Computes the arithmetic mean of all elements in the array.
+  /// - Returns: The average value, or `nil` if the array is empty.
  @inlinable
  public func average() -> Double?
  {
@@ -12,6 +14,14 @@ extension Array where Element == Double
   return sum / Double(count)
  }
 
+ /// Computes the average after trimming a percentage of values
+  /// from both the lower and upper ends of the sorted array.
+  ///
+  /// Useful to reduce the influence of outliers.
+  /// - Parameter percent: The percentage (0–50) of values to trim on each side.
+  ///   Defaults to 10.
+  /// - Returns: The trimmed average, or `nil` if the array is empty
+  ///   or trimming removes all elements.
  @inlinable
  public func trimmedAverage(percent: Int = 10) -> Double?
  {
@@ -36,12 +46,18 @@ extension Array where Element == Double
 
 extension Array where Element == Double?
 {
+ /// Computes the arithmetic mean of all non-`nil` elements.
+  /// - Returns: The average value, or `nil` if no valid elements exist.
  @inlinable
  public func average() -> Double?
  {
   self.compactMap { $0 }.average()
  }
 
+ /// Computes the trimmed average of all non-`nil` elements.
+  /// See `Array<Double>.trimmedAverage(percent:)` for details.
+  /// - Parameter percent: The percentage (0–50) of values to trim on each side.
+  /// - Returns: The trimmed average, or `nil` if no valid elements exist.
  @inlinable
  public func trimmedAverage(percent: Int = 10) -> Double?
  {

@@ -1,6 +1,14 @@
 extension Array where Element: Hashable
 {
- @inlinable
+  /// Computes the differences between the current array and a previous one.
+  ///
+  /// Converts both arrays into sets, then determines which elements
+  /// were removed and which were added.
+  ///
+  /// - Parameter old: The reference array to compare against.
+  /// - Returns: A tuple containing:
+  ///   - `removed`: Elements present in `old` but not in `self`.
+  ///   - `added`: Elements present in `self` but not in `old`. @inlinable
  public func differences(from old: [ Element ]) -> (removed: Set<Element>, added: Set<Element>)
  {
   let newSet = Set(self)

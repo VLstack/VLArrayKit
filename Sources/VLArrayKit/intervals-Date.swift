@@ -2,7 +2,15 @@ import Foundation
 
 extension Array where Element == Date
 {
- @inlinable
+ /// Computes the time intervals between consecutive dates in the array.
+ ///
+ /// - Note:
+ ///   - The array is sorted before computing intervals to ensure chronological order.
+ ///   - Returns an empty array if there are fewer than two dates.
+ ///
+ /// - Returns:
+ ///   An array of `Double` values representing the intervals, in seconds,
+ ///   between each pair of consecutive dates. @inlinable
  public func intervals() -> [ Double ]
  {
   guard self.count > 1 else { return [] }
@@ -23,7 +31,15 @@ extension Array where Element == Date
 
 extension Array where Element == Date?
 {
- @inlinable
+ /// Computes the time intervals between consecutive non-nil dates in the array.
+ ///
+ /// - Note:
+ ///   - `nil` values are ignored.
+ ///   - Uses the same logic as `Array<Date>.intervals()`.
+ ///
+ /// - Returns:
+ ///   An array of `Double` values representing the intervals, in seconds,
+ ///   between each pair of consecutive non-nil dates. @inlinable
  public func intervals() -> [ Double ]
  {
   self.compactMap { $0 }.intervals()

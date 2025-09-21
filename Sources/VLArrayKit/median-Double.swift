@@ -2,6 +2,15 @@ import Foundation
 
 extension Array where Element == Double
 {
+ /// Computes the median value of the array.
+ ///
+ /// - Note:
+ ///   - The array is sorted before calculating the median.
+ ///   - Returns `nil` if the array is empty.
+ ///   - If the number of elements is even, the median is the average of the two middle values.
+ ///
+ /// - Returns:
+ ///   The median value as a `Double`, or `nil` if the array is empty.
  @inlinable
  public func median() -> Double?
  {
@@ -18,6 +27,14 @@ extension Array where Element == Double
 
 extension Array where Element == Double?
 {
+ /// Computes the median value of the array, ignoring `nil` values.
+ ///
+ /// - Note:
+ ///   - `nil` values are removed before calculation.
+ ///   - Uses the same logic as `Array<Double>.median()`.
+ ///
+ /// - Returns:
+ ///   The median value as a `Double`, or `nil` if the array contains no non-nil values.
  @inlinable
  public func median() -> Double?
  {
