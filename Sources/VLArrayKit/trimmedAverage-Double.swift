@@ -34,6 +34,7 @@ extension Array where Element == Double?
 {
  /// Computes the trimmed average of all non-`nil` elements.
  /// See `Array<Double>.trimmedAverage(percent:)` for details.
+ /// 
  /// - Parameter percent: The percentage (0–50) of values to trim on each side.
  /// - Returns: The trimmed average, or `nil` if no valid elements exist.
  @inlinable
